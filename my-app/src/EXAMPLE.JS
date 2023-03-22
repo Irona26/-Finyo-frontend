@@ -1,10 +1,8 @@
 import "./styles.css";
 import React,{ useContext, useMemo, useState } from 'react';
-import AdsList from './AdsList';
+//import AdsList from './AdsList';
 import Header from './components/heading/Header';
 import Home from "./pages/Home";
-import ApartsFilter from "./components/heading/ApartsFilter";
-import RoomsFilter from "./components/heading/RoomsFilter";
 import {SearchApartContext, SearchApartContextCopy} from "./SearchApartContext"
 
 
@@ -28,29 +26,18 @@ function App() {
   );
 
 
-
   return (
     
   <div className="App"> 
-  
 
-<Header vvalue={vvalue} value={value}>
-
-    {useMemo(() => (  
-    <RoomsFilter /> 
-    ), [] )} 
-
- <SearchApartContext.Provider 
-    value={value} >
+ <SearchApartContext.Provider vvalue={vvalue} value={value}>
     {useMemo(() => (   
-      <ApartsFilter />  
-      
+      <Header />  
     ), [] )}
    </SearchApartContext.Provider> 
-</Header>
 
   <Home />
-<AdsList values='apartment'/>
+
   
 
   </div>

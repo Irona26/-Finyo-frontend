@@ -1,0 +1,32 @@
+li {
+    list-style-type:  none;
+}
+
+
+.heading {
+display: flex;
+width:auto;
+height: 375px;
+flex-direction: column;
+background-image: url(../../img/houses-wooden-new.jpg);
+}
+
+h2, h3 {
+    margin: 0 auto;
+    padding: 10px;
+}
+.search-container {
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    width: 70%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    width: 70px;
+    margin: 0 auto;
+}
+
