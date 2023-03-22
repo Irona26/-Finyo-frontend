@@ -7,6 +7,7 @@ import ApartsFilter from "./components/heading/ApartsFilter";
 import RoomsFilter from "./components/heading/RoomsFilter";
 import {SearchApartContext, SearchApartContextCopy} from "./SearchApartContext"
 
+// Там есть еще один вариант РАБОЧИЙ в -APP JS ALTERNATIVE-, но я еще не придумала, как передать несколько значений в Memo:)
 
 function App() {
 
