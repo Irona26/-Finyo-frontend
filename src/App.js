@@ -1,62 +1,38 @@
 import "./styles.css";
-import React,{ useContext, useMemo, useState } from 'react';
-import AdsList from './AdsList';
-import Header from './components/heading/Header';
+import React, { useState } from "react";
+import AdsList from "./AdsList";
+import Header from "./components/heading/Header";
 import Home from "./pages/Home";
-import ApartsFilter from "./components/heading/ApartsFilter";
 import RoomsFilter from "./components/heading/RoomsFilter";
-import {SearchApartContext, SearchApartContextCopy} from "./SearchApartContext"
+import GlobalContext from "./SearchApartContext";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Там есть еще один вариант РАБОЧИЙ в -APP JS ALTERNATIVE-, но я еще не придумала, как передать несколько значений в Memo:)
 
 function App() {
+  const [currentApart, setCurrentApart] = useState(""); // null | undefined
+  const [currentRoomQuant, setCurrentRoomQuant] = useState(0);
 
-
-  const [currentApart, setCurrentApart] = useState('');
-  const [currentRoomQuant, setCurrentRoomQuant] = useState('');
-  
-  const value = useMemo(
-    () => ({currentApart, setCurrentApart}),
-    [currentApart],
-  console.log(currentApart)
-
-  );
-
-  const vvalue = useMemo(
-      () => ({currentRoomQuant, setCurrentRoomQuant}),
-    [currentRoomQuant],
-    console.log(currentRoomQuant)
-  );
-
-
+  console.log("App apart: ", currentApart);
 
   return (
-    
-  <div className="App"> 
-  
-
-<Header vvalue={vvalue} value={value}>
-
-    {useMemo(() => (  
-    <RoomsFilter /> 
-    ), [] )} 
-
- <SearchApartContext.Provider 
-    value={value} >
-    {useMemo(() => (   
-      <ApartsFilter />  
-      
-    ), [] )}
-   </SearchApartContext.Provider> 
-</Header>
-
-  <Home />
-<AdsList values='apartment'/>
-  
-
-  </div>
+      <GlobalContext.Provider
+        value={{
+          currentApart,
+          setCurrentApart,
+          currentRoomQuant,
+          setCurrentRoomQuant,
+        }}
+      >
+        <div className="App">
+          <Header test123={123}>
+            <RoomsFilter />
+          </Header>
+          <Home />
+          <AdsList values="apartment" />
+        </div>
+      </GlobalContext.Provider>
   );
 }
-
 
 export default App;

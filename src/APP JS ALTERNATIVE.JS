@@ -1,48 +1,41 @@
-import "./styles.css";
-import React,{ useContext, useMemo, useState } from 'react';
-//import AdsList from './AdsList';
-import Header from './components/heading/Header';
-import Home from "./pages/Home";
-import {SearchApartContext, SearchApartContextCopy} from "./SearchApartContext"
+import './styles.css'
+import React, { useMemo, useState } from 'react'
+// import AdsList from './AdsList';
+import Header from './components/heading/Header'
+import Home from './pages/Home'
+import GlobalContext from './SearchApartContext'
 
+function App () {
+  const [currentApart, setCurrentApart] = useState('')
+  const [currentRoomQuant, setCurrentRoomQuant] = useState('')
 
-function App() {
-
-
-  const [currentApart, setCurrentApart] = useState('');
-  const [currentRoomQuant, setCurrentRoomQuant] = useState('');
-  
   const value = useMemo(
-    () => ({currentApart, setCurrentApart}),
+    () => ({ currentApart, setCurrentApart }),
     [currentApart],
-  console.log(currentApart)
+    console.log(currentApart)
 
-  );
+  )
 
   const vvalue = useMemo(
-      () => ({currentRoomQuant, setCurrentRoomQuant}),
+    () => ({ currentRoomQuant, setCurrentRoomQuant }),
     [currentRoomQuant],
     console.log(currentRoomQuant)
-  );
-
+  )
 
   return (
-    
-  <div className="App"> 
 
- <SearchApartContext.Provider vvalue={vvalue} value={value}>
-    {useMemo(() => (   
-      <Header />  
-    ), [] )}
-   </SearchApartContext.Provider> 
+  <div className="App">
+
+ <GlobalContext.Provider vvalue={vvalue} value={value}>
+    {useMemo(() => (
+      <Header />
+    ), [])}
+   </GlobalContext.Provider>
 
   <Home />
 
-  
-
   </div>
-  );
+  )
 }
 
-
-export default App;
+export default App

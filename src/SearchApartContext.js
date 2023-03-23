@@ -1,19 +1,5 @@
-import React, {useState} from "react";
+import React from 'react'
 
-const SearchApartContext = React.createContext(
-    {
-        currentApart: '',
-        setCurrentApart: () => {},
-    },
-  
-);
+const GlobalContext = React.createContext()
 
-const SearchApartContextCopy = React.createContext(
-    {
-        currentRoomQuant: '',
-        setCurrentRoomQuant: () => {},
-    },
-  
-);
-
-export {SearchApartContext, SearchApartContextCopy} 
+export default GlobalContext
