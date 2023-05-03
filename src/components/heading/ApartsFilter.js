@@ -1,13 +1,13 @@
 import React from "react";
 import {useContext} from 'react';
-import {SearchApartContext} from "../../SearchApartContext";
+import {Context} from "../../Context";
 import MySelectApart from "./MySelectApart";
 
 
 
 function ApartsFilter() {
     
-  const {currentApart, setCurrentApart} = useContext(SearchApartContext);
+  const {currentApart, setCurrentApart} = useContext(Context);
 
 
   const setAp = (currentApart) => {
@@ -22,8 +22,6 @@ return (
     <MySelectApart
             value={currentApart}
             onChange={setAp}
-
-            defaultValue="apartment"
             options={[
             {value: 'apartment', name:'apartment'},
             {value: 'newfound', name:'newfound'},

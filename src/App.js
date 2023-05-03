@@ -1,58 +1,67 @@
 import "./styles.css";
-import React,{ useContext, useMemo, useState } from 'react';
+import {React, useState } from 'react';
 import AdsList from './AdsList';
 import Header from './components/heading/Header';
-import Home from "./pages/Home";
-import ApartsFilter from "./components/heading/ApartsFilter";
-import RoomsFilter from "./components/heading/RoomsFilter";
-import {SearchApartContext, SearchApartContextCopy} from "./SearchApartContext"
+//import Home from "./pages/Home";
+import {Context} from "./Context"
 
-// Там есть еще один вариант РАБОЧИЙ в -APP JS ALTERNATIVE-, но я еще не придумала, как передать несколько значений в Memo:)
+import { Routes, Route} from 'react-router-dom';
+import {About} from './pages/About';
+import {Blog} from './pages/Blog';
+import {Help} from './pages/Help';
 
 function App() {
 
 
   const [currentApart, setCurrentApart] = useState('');
   const [currentRoomQuant, setCurrentRoomQuant] = useState('');
-  
-  const value = useMemo(
-    () => ({currentApart, setCurrentApart}),
-    [currentApart],
-  console.log(currentApart)
-
-  );
-
-  const vvalue = useMemo(
-      () => ({currentRoomQuant, setCurrentRoomQuant}),
-    [currentRoomQuant],
-    console.log(currentRoomQuant)
-  );
-
-
+  const [firstprice, setFirstPrice] = useState('');
+  const [lastprice, setLastPrice] = useState('');
+  const [currency, setCurrency] = useState('');
 
   return (
     
   <div className="App"> 
+
+
+
+  <Routes>
+  <Route path="/" element={''} />
+    <Route path="/about" element={<About />} />
+    <Route path="/blog" element={<Blog />} />
+    <Route path="/help" element={<Help />} />
+ 
+
+  </Routes>
   
+ 
 
-<Header vvalue={vvalue} value={value}>
+  <Context.Provider 
+      value={{
+        currentApart,
+        setCurrentApart,
+        currentRoomQuant,
+        setCurrentRoomQuant,
+        firstprice,
+        setFirstPrice,
+        lastprice,
+        setLastPrice,
+        currency,
+        setCurrency
+      }}>
 
-    {useMemo(() => (  
-    <RoomsFilter /> 
-    ), [] )} 
+  <Header />
 
- <SearchApartContext.Provider 
-    value={value} >
-    {useMemo(() => (   
-      <ApartsFilter />  
-      
-    ), [] )}
-   </SearchApartContext.Provider> 
-</Header>
 
-  <Home />
-<AdsList values='apartment'/>
-  
+ 
+
+  <AdsList filtrAp={currentApart}
+          filtrRo={currentRoomQuant}
+          filtrFP={firstprice}
+          filtrLP={lastprice}
+          filtrCur={currency}
+  />
+  </Context.Provider> 
 
   </div>
   );

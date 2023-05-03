@@ -5,22 +5,24 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import Input from '@mui/material/Input';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
-import Input from "@mui/material/Input"
+import {Context} from "../../Context";
+import {useContext} from 'react';
 
 
 
 function PriceFilter () {
 
-  const [open, setOpen] = useState(false);
-  const [firstprice, setFirstPrice] = useState('');
-  const [lastprice, setLastPrice] = useState('');
-  const [currency, setCurrency] = useState('');
 
+  const [open, setOpen] = useState(false);
+
+  const {firstprice, setFirstPrice} = useContext(Context);
+  const {lastprice, setLastPrice} =useContext(Context);
+  const {currency, setCurrency} = useContext(Context);
+ 
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -31,6 +33,23 @@ function PriceFilter () {
       setOpen(false);
     }
   };
+
+  const setFP = (firstprice) => {
+    setFirstPrice(firstprice)
+    console.log(firstprice)
+  };
+
+
+  const setLP = (lastprice) => {
+    setLastPrice(lastprice)
+    console.log(lastprice)
+  };
+
+  const setCur = (currency) => {
+    setCurrency(currency)
+    console.log(currency)
+  };
+
 
   return (
     <div>
@@ -43,7 +62,7 @@ function PriceFilter () {
               <InputLabel>From</InputLabel>
               <Input variant="outlined" 
                 value={firstprice}
-                onChange={(event) => setFirstPrice(event.target.value)}
+                onChange={(event) => setFP(event.target.value)}
                 type='number' 
         
               >
@@ -54,21 +73,21 @@ function PriceFilter () {
               <InputLabel>To</InputLabel>
               <Input variant="outlined" 
                  value={lastprice}
-                onChange={(event) => setLastPrice(event.target.value)}
+                onChange={(event) => setLP(event.target.value)}
                 type='number' 
               >
               </Input>
             </FormControl>
 
-            <FormControl sx={{ m: 1, minWidth: 50 }}>
-              <InputLabel>$</InputLabel>
+            <FormControl sx={{ m: 1, minWidth: 100 }}>
+              <InputLabel>BYN</InputLabel>
               <Select
                 value={currency}
-                onChange={(event) => setCurrency(event.target.value)}
+                onChange={(event) => setCur(event.target.value)}
               >
-                <MenuItem value={10}>BYN</MenuItem>
-                <MenuItem value={20}>$</MenuItem>
-                <MenuItem value={30}>€</MenuItem>
+                <MenuItem value={1}>BYN</MenuItem>
+                <MenuItem value={2}>$</MenuItem>
+                <MenuItem value={3}>€</MenuItem>
               </Select>
             </FormControl>
           </Box>

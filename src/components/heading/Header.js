@@ -1,15 +1,13 @@
 import "./style.css";
 import React, {useContext,useState} from 'react';
-import { AppBar, IconButton, Toolbar, Typography, FormControl, InputLabel, Popper, Button } from "@mui/material"
+import { AppBar, IconButton, Toolbar, Typography, FormControl, InputLabel, Button } from "@mui/material"
 import Search from '../../Search';
 import { Roofing } from "@mui/icons-material"
 import Navbar from "../../components/navbar/Navbar";
-
-import MySelectRoom from "./MySelectRoom";
-import {SearchApartContext, SearchApartContextCopy} from "../../SearchApartContext";
 import ApartsFilter from "./ApartsFilter";
 import RoomsFilter from "./RoomsFilter";
 import PriceFilter from "./PriceFilter";
+import Home from "../../pages/Home";
 import { red } from "@mui/material/colors";
 
 
@@ -72,6 +70,14 @@ function Header() {
      
         </ul>
       </div>
+
+      <main>
+            <div className="section">
+                <h2>Recent  <br/> Properties</h2>
+                <p>Check out some of our latest properties.</p>
+            </div>
+            
+        </main>
 
     </>
   )

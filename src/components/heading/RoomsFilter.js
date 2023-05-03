@@ -1,12 +1,13 @@
 import React from "react";
 import {useContext} from 'react';
-import {SearchApartContextCopy} from "../../SearchApartContext";
+import {Context} from "../../Context";
 import MySelectRoom from "./MySelectRoom";
+
 
 
 function RoomsFilter() {
 
-    const {currentRoomQuant, setCurrentRoomQuant} = useContext(SearchApartContextCopy);
+    const {currentRoomQuant, setCurrentRoomQuant} = useContext(Context);
 
     const setRo = (currentRoomQuant) => {
   
@@ -19,7 +20,7 @@ return (
     value={currentRoomQuant}
     onChange={setRo}
 
-    defaultValue= ''
+    defaultValue= '1'
     options={[
     {value: '1', name:'1'},
     {value: '2', name:'2'},

@@ -1,8 +1,10 @@
+import Header from "../components/heading/Header";
+
+
 function Home() {
     return (
         <>
-      
-        <main>
+               <main>
             <div className="section">
                 <h2>Recent  <br/> Properties</h2>
                 <p>Check out some of our latest properties.</p>
