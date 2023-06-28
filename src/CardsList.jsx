@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 
 import Cards from './Cards';
 import aparts from './fixtures/data';
+import CurrencyData from './fixtures/CurrencyData';
 
 import Context from './Context';
 
@@ -13,6 +14,7 @@ function CardsList() {
   const { getValues } = useFormContext();
 
   const ApartItem = getValues().currentApartment;
+  const StreetName = getValues().currentStreet;
   const RoomItem = getValues().currentRoomQuant;
   const MinPrice = getValues().fromPrice;
   const MaxPrice = getValues().lastPrice;
@@ -22,17 +24,18 @@ function CardsList() {
     firstCardIndex, lastCardIndex, isFormSubmitted, cardListLength, setLength,
   } = useContext(Context);
 
-  const CURRENCY = {
-    1: 'BYN',
-    2: '$',
-    3: '€',
-  };
-  const val = CurrencyItem;
+  const index = CurrencyItem;
+
   let arrayLength = 0;
 
   const cardListFilter = () => aparts.filter((apart) => {
     if (ApartItem !== '') {
       if (!apart.category.toLowerCase().includes(ApartItem)) {
+        return false;
+      }
+    }
+    if (StreetName !== '') {
+      if (!apart.street.includes(StreetName)) {
         return false;
       }
     }
@@ -44,20 +47,20 @@ function CardsList() {
     }
 
     if (MinPrice !== '') {
-      if (apart.price[val] <= MinPrice) {
+      if (apart.price[index] <= MinPrice) {
         return false;
       }
     }
 
     if (MaxPrice) {
-      if (apart.price[val] >= MaxPrice) {
+      if (apart.price[index] >= MaxPrice) {
         return false;
       }
     }
     arrayLength += 1;
     setLength(arrayLength);
     return true;
-  }, console.log('total', arrayLength, cardListLength));
+  }, console.log('total', cardListLength));
 
   const startFilter = useMemo(() => cardListFilter(), [isFormSubmitted]);
 
@@ -70,8 +73,9 @@ function CardsList() {
             poster={apart.poster}
             name={apart.name}
             category={apart.category}
-            cur={CURRENCY[val]}
-            price={apart.price[val]}
+            currency={CurrencyData[index]}
+            price={apart.price[index]}
+            street={apart.street}
           />
         )).slice(firstCardIndex, lastCardIndex)}
     </Grid>

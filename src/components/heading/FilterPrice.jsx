@@ -12,12 +12,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
 
-function FilterPrice() {
-  const [open, setOpen] = useState(false);
+import CurrencyData from '../../fixtures/CurrencyData';
 
-  const { control, setValue } = useFormContext();
+function FilterPrice() {
+  const { control, setValue, getValues } = useFormContext();
+  const currencyKey = CurrencyData[getValues().currency];
+
+  const [open, setOpen] = useState(false);
+  const [buttonText, setButtonText] = useState('Price');
+  const [buttonTextLast, setButtonTextLast] = useState(null);
+  const [buttonCurrency, setButtonCurrrency] = useState(null);
 
   const handleClickOpen = () => {
+    setButtonCurrrency(currencyKey);
     setOpen(true);
   };
 
@@ -25,16 +32,31 @@ function FilterPrice() {
     setOpen(false);
   };
 
-  const minPrice = (price) => {
+  const dataReset = () => {
+    setOpen(false);
+    setButtonText('Price');
+    setButtonTextLast(null);
+    setButtonCurrrency(null);
+  };
+
+  const setMinPrice = (price) => {
     setValue('fromPrice', price);
+    setButtonText(`${price} -`);
   };
 
-  const maxPrice = (price) => {
+  const setMaxPrice = (price) => {
     setValue('lastPrice', price);
+    setButtonTextLast(price);
   };
 
-  const currencyItem = (curr) => {
-    setValue('currency', curr);
+  const setCurrency = (index) => {
+    setValue('currency', index);
+    setButtonCurrrency(CurrencyData[index]);
+  };
+
+  const inputProps = {
+    min: 0,
+    max: 1000000,
   };
 
   return (
@@ -51,7 +73,12 @@ function FilterPrice() {
           color: 'rgba(0, 0, 0, 0.65)',
         }}
       >
-        Price
+        {buttonText}
+        {' '}
+        {buttonTextLast}
+        {' '}
+        {buttonCurrency}
+
       </Button>
 
       <Dialog
@@ -77,9 +104,9 @@ function FilterPrice() {
                   <TextField
                     label="From"
                     value={value}
-                    onChange={(event) => minPrice(event.target.value)}
+                    onChange={(event) => setMinPrice(event.target.value)}
                     type="number"
-                    InputProps={{ inputProps: { min: 0, max: 10000000 } }}
+                    inputProps={inputProps}
                   />
                 )}
               />
@@ -94,9 +121,9 @@ function FilterPrice() {
                     label="To"
                     variant="outlined"
                     value={value}
-                    onChange={(event) => maxPrice(event.target.value)}
+                    onChange={(event) => setMaxPrice(event.target.value)}
                     type="number"
-                    InputProps={{ inputProps: { min: 0, max: 10000000 } }}
+                    inputProps={inputProps}
                   />
                 )}
               />
@@ -112,11 +139,16 @@ function FilterPrice() {
                     defaultValue="BYN"
                     variant="outlined"
                     value={value}
-                    onChange={(event) => currencyItem(event.target.value)}
+                    onChange={(event) => setCurrency(event.target.value)}
                   >
-                    <MenuItem value={1}>BYN</MenuItem>
-                    <MenuItem value={2}>$</MenuItem>
-                    <MenuItem value={3}>€</MenuItem>
+                    {Object.keys(CurrencyData).map((key) => (
+                      <MenuItem
+                        key={key}
+                        value={key}
+                      >
+                        {CurrencyData[key]}
+                      </MenuItem>
+                    ))}
                   </TextField>
                 )}
               />
@@ -131,7 +163,7 @@ function FilterPrice() {
             sx={{
               m: 1, border: '1px solid #ffc107', minWidth: 100, height: 45, color: 'inherit',
             }}
-            onClick={handleClose}
+            onClick={dataReset}
           >
             Cancel
           </Button>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
+import { useTheme } from '@mui/material/styles';
+
 import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,21 +11,26 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 
 function Cards({
-  category, name, price, poster, cur,
+  category, name, price, poster, currency, street,
 }) {
+  const theme = useTheme();
   return (
     <Grid
       item
       md="4"
       sx={{
-        m: '10px 0 10px 0', backgroundColor: '#eceff1', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        m: '10px 0 10px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: theme.palette.primary.background,
       }}
     >
       <Card sx={{
         display: 'flex',
         boxShadow: 0,
         flexDirection: 'column',
-        backgroundColor: '#eceff1',
+        backgroundColor: theme.palette.primary.background,
         ':hover': {
           boxShadow: '10px 10px 10px rgb(8, 0, 92, 0.2)',
         },
@@ -48,24 +55,24 @@ function Cards({
         >
           <Typography
             variant="body1"
-            color="#ffc107"
             sx={{
               gridColumn: '2',
               gridRow: '1',
+              color: theme.palette.primary.contrast,
             }}
           >
             {price}
             {' '}
-            {cur}
-
+            {currency}
           </Typography>
+
           <Typography
             variant="h6"
             component="h3"
-            color="#08005c"
             sx={{
               gridColumn: '1',
               gridRow: '1',
+              color: theme.palette.primary.main,
             }}
           >
             {name}
@@ -79,26 +86,33 @@ function Cards({
             {category}
           </Typography>
 
+          <Typography sx={{
+            gridColumn: '1',
+            gridRow: '3',
+          }}
+          >
+            {street}
+          </Typography>
         </CardContent>
 
         <Button
           variant="outlined"
           size="medium"
+          color="secondary"
           sx={{
             width: '350px',
             height: '40px',
             p: 0,
             position: 'relative',
-            top: '-125px',
+            top: '-150px',
             zIndex: 7,
             backgroundColor: 'rgb(236, 239, 241, 0.7)',
-            color: '#e91e63',
             border: 'none',
             borderRadius: 0,
             fontSize: '18px',
             ':hover': {
               bgcolor: 'rgb(255, 193, 7, 0.75)',
-              color: '#ffffff',
+              color: theme.palette.primary.light,
               border: 'none',
             },
           }}
@@ -115,7 +129,8 @@ Cards.propTypes = {
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
-  cur: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+  street: PropTypes.string.isRequired,
 };
 
 export default Cards;

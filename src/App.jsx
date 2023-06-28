@@ -1,7 +1,6 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { React, useState } from 'react';
+import { React, useState, useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { useForm, FormProvider } from 'react-hook-form';
@@ -39,24 +38,25 @@ function App() {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     formSubmit(!isFormSubmitted);
-    console.log('form submitted ✅', data);
   };
+
+  const contextValues = useMemo(() => ({
+    firstCardIndex,
+    lastCardIndex,
+    isFormSubmitted,
+    cardListLength,
+    cardsPerPage,
+    setLength,
+    paginate,
+  }));
   return (
 
     <div className="App">
       <FormProvider {...methods} onSubmit={methods.handleSubmit(onSubmit, () => console.log('invalid'))}>
         <Context.Provider
-          value={{
-            firstCardIndex,
-            lastCardIndex,
-            isFormSubmitted,
-            cardListLength,
-            cardsPerPage,
-            setLength,
-            paginate,
-          }}
+          value={contextValues}
         >
           <Navbar />
           <Routes>

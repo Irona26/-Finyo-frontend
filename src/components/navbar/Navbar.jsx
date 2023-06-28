@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useTheme } from '@mui/material/styles';
+
 import {
   Box, Button, AppBar, Toolbar, IconButton, Typography,
 } from '@mui/material';
+
 import CardMedia from '@mui/material/CardMedia';
 import { Roofing } from '@mui/icons-material';
 import backimg from '../../img/back1.png';
 
 export default function Navbar() {
+  const theme = useTheme();
   return (
     <AppBar
       className="appbar"
@@ -19,7 +23,7 @@ export default function Navbar() {
         gridTemplateColumns: 'repeat(4, 120px)',
         pl: 5,
         pr: 5,
-        backgroundColor: '#eceff1',
+        bgcolor: theme.palette.primary.background,
       }}
     >
       <Toolbar sx={{
@@ -69,8 +73,8 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: '#ffc107',
-                color: '#ffffff',
+                bgcolor: theme.palette.primary.contrast,
+                color: theme.palette.primary.light,
               },
             }}
             to="/about"
@@ -83,8 +87,8 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: '#ffc107',
-                color: '#ffffff',
+                bgcolor: theme.palette.primary.contrast,
+                color: theme.palette.primary.light,
               },
             }}
             to="/blog"
@@ -97,8 +101,8 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: '#ffc107',
-                color: '#ffffff',
+                bgcolor: theme.palette.primary.contrast,
+                color: theme.palette.primary.light,
               },
             }}
             to="/help"

@@ -13,10 +13,10 @@ import CardMedia from '@mui/material/CardMedia';
 
 import bimg from '../../img/back12.png';
 
-import FilterStreets from './FilterStreets';
 import FilterApartment from './FilterApartment';
 import FilterRooms from './FilterRooms';
 import FilterPrice from './FilterPrice';
+import StreetSearch from './StreetSearch';
 
 function Header() {
   const theme = useTheme();
@@ -28,21 +28,22 @@ function Header() {
       sx={{
         display: 'grid',
         width: 'auto',
+        p: 4,
         gridAutoFlow: 'column',
         gap: '10px',
         gridTemplateColumns: '200px',
         gridTemplateRows: '15px, 50px',
         alignItems: 'center',
         background: theme.palette.primary.gradient,
-        outline: '1px solid #ffc107',
+        outline: '1px solid',
         outlineOffset: '-10px',
-        p: 4,
+        outlineColor: theme.palette.primary.contrast,
       }}
     >
       <CardMedia
         component="img"
         image={bimg}
-        alt="hous"
+        alt="house"
         objectFit="inherit"
         sx={{
           height: 194,
@@ -51,14 +52,15 @@ function Header() {
           gridRow: '1 / 4',
         }}
       />
-      <Typography variant="h4" component="p" color="#ffc107">
+      <Typography variant="h4" component="p" sx={{ color: theme.palette.primary.contrast }}>
         Let&apos;s Find
       </Typography>
 
-      <Typography component="span" color="#ffffff" sx={{ width: '400px', m: '10px 0' }}>
+      <Typography component="span" sx={{ width: '400px', m: '10px 0', color: theme.palette.primary.light }}>
         Find a variety of properties that suit you very easily,
         forget all difficulties in finding a residence for you.
       </Typography>
+
       <form onSubmit={onSubmit}>
         <Box sx={{
           display: 'grid',
@@ -66,31 +68,30 @@ function Header() {
           minWidth: '930px',
           m: '10px 0',
           gridTemplateColumns: '150px 170px 150px 150px 150px 150px',
-          backgroundColor: '#eceff1',
-          borderRadius: '10px',
           alignItems: 'center',
           justifyContent: 'center',
+          backgroundColor: theme.palette.primary.background,
+          borderRadius: '10px',
         }}
         >
-          <FormControl
-            sx={{
-              m: 1, minWidth: 120, color: '#e0f2f1',
-            }}
-          >
-            <InputLabel>Apartment</InputLabel>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
 
+            <InputLabel>Apartment</InputLabel>
             <FilterApartment />
 
           </FormControl>
+
           <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel>Street</InputLabel>
-            <FilterStreets />
+
+            <StreetSearch />
+
           </FormControl>
+
           <FilterPrice />
 
           <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel>Rooms</InputLabel>
 
+            <InputLabel>Rooms</InputLabel>
             <FilterRooms />
 
           </FormControl>
@@ -99,7 +100,12 @@ function Header() {
             variant="outlined"
             size="medium"
             sx={{
-              m: 1, border: '1px solid #ffc107', minWidth: 120, height: 56, color: 'rgba(0, 0, 0, 0.65)',
+              m: 1,
+              minWidth: 120,
+              height: 56,
+              color: 'rgba(0, 0, 0, 0.65)',
+              border: '1px solid',
+              borderColor: theme.palette.primary.contrast,
             }}
           >
             Advance Search
@@ -110,7 +116,12 @@ function Header() {
             variant="contained"
             size="large"
             sx={{
-              m: 1, border: '1px solid inherit', minWidth: 120, height: 56, color: '#ffffff', backgroundColor: '#ffc107',
+              m: 1,
+              border: '1px solid inherit',
+              minWidth: 120,
+              height: 56,
+              color: theme.palette.primary.light,
+              backgroundColor: theme.palette.primary.contrast,
             }}
           >
             Search

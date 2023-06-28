@@ -27,7 +27,7 @@ SelectRooms.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string,
+    value: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
 };

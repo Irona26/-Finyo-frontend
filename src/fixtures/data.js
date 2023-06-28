@@ -10,6 +10,7 @@ export default [
       3: 530,
     },
     rooms: 3,
+    street: 'Belyye Rosy',
   },
   {
     id: 'ad02',
@@ -22,6 +23,7 @@ export default [
       3: 400,
     },
     rooms: 2,
+    street: 'Bolshaya Troitskaya',
   },
   {
     id: 'ad03',
@@ -34,6 +36,7 @@ export default [
       3: 1210,
     },
     rooms: 4,
+    street: 'Dovatora',
   },
 
   {
@@ -47,6 +50,7 @@ export default [
       3: 1210,
     },
     rooms: 4,
+    street: 'Kabyaka',
   },
   {
     id: 'ad05',
@@ -59,6 +63,7 @@ export default [
       3: 1210,
     },
     rooms: 1,
+    street: 'Lenina',
   },
   {
     id: 'ad06',
@@ -71,6 +76,7 @@ export default [
       3: 1210,
     },
     rooms: 2,
+    street: 'Ozheshko',
   },
   {
     id: 'ad07',
@@ -83,6 +89,7 @@ export default [
       3: 1210,
     },
     rooms: 4,
+    street: 'Belyye Rosy',
   },
   {
     id: 'ad08',
@@ -95,6 +102,7 @@ export default [
       3: 1210,
     },
     rooms: 3,
+    street: 'Bolshaya Troitskaya',
   },
   {
     id: 'ad09',
@@ -107,6 +115,7 @@ export default [
       3: 1210,
     },
     rooms: 1,
+    street: 'Dovatora',
   },
   {
     id: 'ad10',
@@ -119,6 +128,7 @@ export default [
       3: 1210,
     },
     rooms: 2,
+    street: 'Lenina',
   },
   {
     id: 'ad11',
@@ -131,5 +141,6 @@ export default [
       3: 1210,
     },
     rooms: 2,
+    street: 'Ozheshko',
   },
 ];

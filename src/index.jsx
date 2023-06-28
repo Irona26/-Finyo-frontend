@@ -11,24 +11,17 @@ import reportWebVitals from './reportWebVitals';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#08005c',
-      softHoverBg: '#1b5e20',
+      main: '#08005c', // blue
+      light: '#ffffff', // white
+      contrast: '#ffc107', // yellow
+      background: '#eceff1', // grey
       gradient: 'linear-gradient(45deg, #08005c 30%, #e91e63 90%)',
     },
 
     secondary: {
-      main: '#e91e63',
+      main: '#e91e63', // red
     },
   },
-  typography: {
-    poster: {
-      fontSize: '4rem',
-      color: '#1a237e',
-      component: 'span',
-      flexGrow: 0.5,
-    },
-  },
-
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { useTheme } from '@mui/material/styles';
+
 import {
   Typography, Box, Button, IconButton,
 } from '@mui/material';
@@ -12,29 +14,31 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Footer() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
-        width: 'auto',
         display: 'grid',
+        width: 'auto',
+        p: 3,
+        m: '0 auto',
         gridAutoFlow: 'column',
         gap: '0 30%',
         gridTemplateColumns: '200px',
         gridTemplateRows: '15px, 50px',
         alignItems: 'center',
-        outline: '1px solid #ffc107',
+        outline: '1px solid',
+        outlineColor: theme.palette.primary.contrast,
         outlineOffset: '-10px',
-        p: 3,
-        m: '0 auto',
       }}
     >
       <Typography
-        color="#fffff"
         variant="h4"
         component="span"
         sx={{
           gridColumn: '1',
           gridRow: '1',
+          color: theme.palette.primary.main,
         }}
       >
         <IconButton
@@ -102,8 +106,8 @@ function Footer() {
           sx={{
             fontSize: '12px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="/"
@@ -116,8 +120,8 @@ function Footer() {
           sx={{
             fontSize: '12px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="/blog"
@@ -130,8 +134,8 @@ function Footer() {
           sx={{
             fontSize: '12px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="/help"
@@ -144,8 +148,8 @@ function Footer() {
           sx={{
             fontSize: '12px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="/about"
@@ -177,8 +181,8 @@ function Footer() {
           sx={{
             fontSize: '15px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="mailto:email@contact.com"
@@ -191,8 +195,8 @@ function Footer() {
           sx={{
             fontSize: '15px',
             ':hover': {
-              bgcolor: '#ffc107',
-              color: '#ffffff',
+              bgcolor: theme.palette.primary.contrast,
+              color: theme.palette.primary.light,
             },
           }}
           to="+13 674 567 75 54"
