@@ -59,8 +59,8 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: '#ffc107',
-                color: '#ffffff',
+                bgcolor: theme.palette.primary.contrast,
+                color: theme.palette.primary.light,
               },
             }}
             to="/"
@@ -101,7 +101,7 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: theme.palette.primary.contrast,
+                bgcolor: theme.palette.primary.main,
                 color: theme.palette.primary.light,
               },
             }}

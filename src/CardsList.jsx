@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useEffect } from 'react';
 
 import { useFormContext } from 'react-hook-form';
 
@@ -21,14 +21,10 @@ function CardsList() {
   const CurrencyItem = getValues().currency;
 
   const {
-    firstCardIndex, lastCardIndex, isFormSubmitted, cardListLength, setLength,
+    firstCardIndex, lastCardIndex, isFormSubmitted, setLength,
   } = useContext(Context);
 
-  const index = CurrencyItem;
-
-  let arrayLength = 0;
-
-  const cardListFilter = () => aparts.filter((apart) => {
+  const cardListFilter = useMemo(() => aparts.filter((apart) => {
     if (ApartItem !== '') {
       if (!apart.category.toLowerCase().includes(ApartItem)) {
         return false;
@@ -47,34 +43,34 @@ function CardsList() {
     }
 
     if (MinPrice !== '') {
-      if (apart.price[index] <= MinPrice) {
+      if (apart.price[CurrencyItem] <= MinPrice) {
         return false;
       }
     }
 
     if (MaxPrice) {
-      if (apart.price[index] >= MaxPrice) {
+      if (apart.price[CurrencyItem] > MaxPrice) {
         return false;
       }
     }
-    arrayLength += 1;
-    setLength(arrayLength);
     return true;
-  }, console.log('total', cardListLength));
+  }), [isFormSubmitted]);
 
-  const startFilter = useMemo(() => cardListFilter(), [isFormSubmitted]);
+  useEffect(() => {
+    setLength(cardListFilter.length);
+  }, [cardListFilter.length]);
 
   return (
     <Grid container fixed spacing={2} sx={{ backgroundColor: '#eceff1' }}>
 
-      { startFilter
+      { cardListFilter
         .map((apart) => (
           <Cards
             poster={apart.poster}
             name={apart.name}
             category={apart.category}
-            currency={CurrencyData[index]}
-            price={apart.price[index]}
+            currency={CurrencyData[CurrencyItem]}
+            price={apart.price[CurrencyItem]}
             street={apart.street}
           />
         )).slice(firstCardIndex, lastCardIndex)}

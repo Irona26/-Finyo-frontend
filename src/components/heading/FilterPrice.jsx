@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import { Controller, useFormContext } from 'react-hook-form';
 
+import { useTheme } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -15,6 +17,8 @@ import { TextField } from '@mui/material';
 import CurrencyData from '../../fixtures/CurrencyData';
 
 function FilterPrice() {
+  const theme = useTheme();
+
   const { control, setValue, getValues } = useFormContext();
   const currencyKey = CurrencyData[getValues().currency];
 
@@ -45,6 +49,9 @@ function FilterPrice() {
   };
 
   const setMaxPrice = (price) => {
+    if (buttonText === 'Price') {
+      setButtonText(null);
+    }
     setValue('lastPrice', price);
     setButtonTextLast(price);
   };
@@ -171,7 +178,16 @@ function FilterPrice() {
             variant="contained"
             size="small"
             sx={{
-              m: 1, border: '1px solid inherit', minWidth: 100, height: 45, color: '#ffffff', backgroundColor: '#ffc107',
+              m: 1,
+              border: '1px solid inherit',
+              minWidth: 100,
+              height: 45,
+              color: theme.palette.primary.light,
+              backgroundColor: theme.palette.primary.contrast,
+              ':hover': {
+                bgcolor: theme.palette.primary.main,
+                color: theme.palette.primary.light,
+              },
             }}
             onClick={handleClose}
           >
