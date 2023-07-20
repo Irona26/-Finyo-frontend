@@ -8,17 +8,18 @@ import { useForm, FormProvider } from 'react-hook-form';
 import Home from './pages/Home';
 import Context from './Context';
 import Footer from './components/footer/Footer';
-
 import About from './pages/About';
 import Blog from './pages/Blog';
-import Help from './pages/Help';
+import Contact from './pages/Contact';
 import Navbar from './components/navbar/Navbar';
+import CardPage from './pages/CardPage';
 
 function App() {
   const [currentPage, setCurrenPage] = useState(1);
   const [cardsPerPage] = useState(3);
   const [isFormSubmitted, formSubmit] = useState(false);
   const [cardListLength, setLength] = useState(11);
+  const [cardId, setCardId] = useState(null);
 
   const lastCardIndex = currentPage * cardsPerPage;
   const firstCardIndex = lastCardIndex - cardsPerPage;
@@ -50,23 +51,27 @@ function App() {
     cardsPerPage,
     setLength,
     paginate,
+    cardId,
+    setCardId,
   }));
+
   return (
 
-    <div className="App">
+    <div>
       <FormProvider {...methods} onSubmit={methods.handleSubmit(onSubmit, () => console.log('invalid'))}>
         <Context.Provider
           value={contextValues}
         >
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/help" element={<Help />} />
+            <Route index element={<Home />} />
+            <Route path="cardpage" element={<CardPage />} />
+            <Route path="about" element={<About />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="contact/*" element={<Contact />} />
           </Routes>
+          <Footer />
         </Context.Provider>
-        <Footer />
       </FormProvider>
     </div>
   );

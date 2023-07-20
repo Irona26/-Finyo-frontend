@@ -5,4 +5,5 @@ export default [
   { value: 'Kabyaka', name: 'Kabyaka' },
   { value: 'Lenina', name: 'Lenina' },
   { value: 'Ozheshko', name: 'Ozheshko' },
+  { value: 'Titova', name: 'Titova' },
 ];

@@ -27,9 +27,7 @@ function Footer() {
         gridTemplateColumns: '200px',
         gridTemplateRows: '15px, 50px',
         alignItems: 'center',
-        outline: '1px solid',
-        outlineColor: theme.palette.primary.contrast,
-        outlineOffset: '-10px',
+        background: theme.palette.primary.gradient,
       }}
     >
       <Typography
@@ -38,11 +36,11 @@ function Footer() {
         sx={{
           gridColumn: '1',
           gridRow: '1',
-          color: theme.palette.primary.main,
+          color: theme.palette.primary.contrast,
         }}
       >
         <IconButton
-          color="inherit"
+          sx={{ color: theme.palette.primary.contrast }}
         >
           <Roofing sx={{ fontSize: '2rem' }} />
         </IconButton>
@@ -57,38 +55,60 @@ function Footer() {
           sx={{
             gridColumn: '1',
             gridRow: '2',
+            color: theme.palette.primary.light,
           }}
         >
           You can support our project in socials!
         </Typography>
 
         <IconButton
-          color="inherit"
+          sx={{
+            color: theme.palette.primary.light,
+            ':hover': {
+              color: theme.palette.primary.contrast,
+            },
+          }}
         >
           <TelegramIcon sx={{ fontSize: '1.5rem' }} />
         </IconButton>
         <IconButton
-          color="inherit"
+          sx={{
+            color: theme.palette.primary.light,
+            ':hover': {
+              color: theme.palette.primary.contrast,
+            },
+          }}
         >
           <InstagramIcon sx={{ fontSize: '1.5rem' }} />
         </IconButton>
         <IconButton
-          color="inherit"
+          sx={{
+            color: theme.palette.primary.light,
+            ':hover': {
+              color: theme.palette.primary.contrast,
+            },
+          }}
         >
           <FacebookIcon sx={{ fontSize: '1.5rem' }} />
         </IconButton>
         <IconButton
-          color="inherit"
+          sx={{
+            color: theme.palette.primary.light,
+            ':hover': {
+              color: theme.palette.primary.contrast,
+            },
+          }}
         >
           <LinkedInIcon sx={{ fontSize: '1.5rem' }} />
         </IconButton>
       </Box>
       <Typography
-        variant="h6"
+        variant="h4"
         sx={{
           gridColumn: '2',
           gridRow: '1',
           m: '0 10px 0 10px',
+          color: theme.palette.primary.contrast,
         }}
       >
         Links
@@ -102,9 +122,9 @@ function Footer() {
       }}
       >
         <Button
-          color="secondary"
           sx={{
             fontSize: '12px',
+            color: theme.palette.primary.light,
             ':hover': {
               bgcolor: theme.palette.primary.contrast,
               color: theme.palette.primary.light,
@@ -116,9 +136,9 @@ function Footer() {
           Home
         </Button>
         <Button
-          color="secondary"
           sx={{
             fontSize: '12px',
+            color: theme.palette.primary.light,
             ':hover': {
               bgcolor: theme.palette.primary.contrast,
               color: theme.palette.primary.light,
@@ -130,23 +150,9 @@ function Footer() {
           Blog
         </Button>
         <Button
-          color="secondary"
           sx={{
             fontSize: '12px',
-            ':hover': {
-              bgcolor: theme.palette.primary.contrast,
-              color: theme.palette.primary.light,
-            },
-          }}
-          to="/help"
-          component={Link}
-        >
-          Help
-        </Button>
-        <Button
-          color="secondary"
-          sx={{
-            fontSize: '12px',
+            color: theme.palette.primary.light,
             ':hover': {
               bgcolor: theme.palette.primary.contrast,
               color: theme.palette.primary.light,
@@ -158,21 +164,11 @@ function Footer() {
           About
         </Button>
       </Box>
-      <Typography
-        variant="h6"
-        sx={{
-          m: 1,
-          gridColumn: '3',
-          gridRow: '1',
-        }}
-      >
-        Contact us
-      </Typography>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         gridColumn: '3',
-        gridRow: '2/3',
+        gridRow: '1/3',
         alignItems: 'start',
       }}
       >

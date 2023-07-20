@@ -15,11 +15,12 @@ const theme = createTheme({
       light: '#ffffff', // white
       contrast: '#ffc107', // yellow
       background: '#eceff1', // grey
-      gradient: 'linear-gradient(45deg, #08005c 30%, #e91e63 90%)',
+      gradient: 'linear-gradient(45deg, #08005c 30%, #eceff1 90%)',
     },
 
     secondary: {
       main: '#e91e63', // red
+      gradient: 'linear-gradient(45deg, #e91e63 30%, #eceff1 90%)',
     },
   },
 });

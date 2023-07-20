@@ -6,29 +6,51 @@ import {
 
 import { useTheme } from '@mui/material/styles';
 
+import useScrollTo from '../useScrollTo';
+
 import Header from '../components/heading/Header';
 import CardsList from '../CardsList';
 import Paginationn from '../Pagination';
-import himg from '../img/7home.png';
+import About from './About';
+
+import img from '../img/7home.png';
 
 function Home() {
   const theme = useTheme();
+  useScrollTo();
   return (
     <>
       <Header />
       <Box sx={{
         display: 'grid',
         width: 'auto',
-        padding: '3%',
-        gridTemplateRows: '50px 50px',
+        maxWidth: '1200px',
+        m: '0 auto',
+        p: 4,
+        pt: 10,
+        pb: 0,
         justifyContent: 'center',
-        alignContent: 'baseline',
+        alignContent: 'center',
         bgcolor: theme.palette.primary.background,
       }}
       >
-        <Typography variant="h5" component="p" sx={{ m: 'auto', color: theme.palette.primary.main }}>
-          Recent Properties
+        <Typography component="span" color="secondary" align="center" sx={{ m: 'auto' }}>
+          Properties
         </Typography>
+
+        <Typography
+          variant="h2"
+          sx={{
+            m: 'auto',
+            pb: 2,
+            fontSize: '46px',
+            fontWeight: '700',
+            color: theme.palette.primary.main,
+          }}
+        >
+          Latest Listings
+        </Typography>
+
         <Typography component="span" color="inherit" align="center" sx={{ m: 'auto' }}>
           Check out some of our latest properties.
         </Typography>
@@ -40,8 +62,11 @@ function Home() {
       <Box sx={{
         display: 'grid',
         width: 'auto',
-        m: 2,
-        p: 2,
+        maxWidth: '1200px',
+        m: '0 auto',
+        p: 4,
+        pt: 10,
+        pb: 10,
         alignItems: 'center',
         alignContent: 'center',
         verticalAlign: 'top',
@@ -50,35 +75,49 @@ function Home() {
       >
         <CardMedia
           component="img"
-          image={himg}
+          image={img}
           alt="houses"
           objectFit="inherit"
           sx={{
             height: 350,
             width: 350,
-            gridColumn: '1',
+            mr: 2,
+            gridColumn: 2,
             gridRowStart: 1,
-            gridRowEnd: 11,
-            m: 1,
+            gridRowEnd: 12,
             borderRadius: '10px',
             boxShadow: 3,
           }}
         />
         <Typography
+          color="secondary"
+          sx={{
+            gridColumn: '1/4',
+            gridRow: '1',
+            textAlign: 'start',
+          }}
+        >
+          Practical way of use
+        </Typography>
+
+        <Typography
           variant="h4"
           component="p"
           sx={{
-            gridColumn: '2/4',
-            gridRow: '1',
+            pb: 2,
+            gridColumn: '1/4',
+            gridRow: 2,
+            fontSize: '46px',
+            fontWeight: '700',
             color: theme.palette.primary.main,
           }}
         >
           How It Works
         </Typography>
         <Typography sx={{
-          gridColumn: '2/4',
-          gridRow: '2',
-          mb: 4,
+          gridColumn: '1/4',
+          gridRow: 3,
+          pb: 6,
         }}
         >
           These are steps for buying a house.
@@ -86,11 +125,12 @@ function Home() {
         <Button
           disabled
           sx={{
-            gridColumnStart: 2,
+            gridColumnStart: 1,
             gridColumnEnd: 4,
-            gridRowStart: 3,
-            gridRowEnd: 5,
+            gridRowStart: 4,
+            gridRowEnd: 6,
             p: 0,
+            mb: 4,
             width: '50px',
             height: '50px',
             minWidth: '50px',
@@ -109,8 +149,8 @@ function Home() {
           color="secondary"
           sx={{
             display: 'grid',
-            gridColumn: '2',
-            gridRow: '3',
+            gridColumn: 1,
+            gridRow: 4,
             ml: 10,
             fontSize: '25px',
             verticalAlign: 'bottom',
@@ -119,9 +159,10 @@ function Home() {
           Find a House you want to buy or rent
         </Typography>
         <Typography sx={{
-          gridColumn: '2',
-          gridRow: '4',
+          gridColumn: 1,
+          gridRow: 5,
           ml: 10,
+          pb: 4,
         }}
         >
           Do a search for the house you want there we are
@@ -130,11 +171,12 @@ function Home() {
         <Button
           disabled
           sx={{
-            gridColumnStart: 2,
+            gridColumnStart: 1,
             gridColumnEnd: 4,
-            gridRowStart: 6,
-            gridRowEnd: 8,
+            gridRowStart: 7,
+            gridRowEnd: 9,
             p: 0,
+            mb: 4,
             width: '50px',
             height: '50px',
             minWidth: '50px',
@@ -152,8 +194,8 @@ function Home() {
         <Typography
           color="secondary"
           sx={{
-            gridColumn: '2',
-            gridRow: '6',
+            gridColumn: 1,
+            gridRow: 7,
             ml: 10,
             fontSize: '25px',
           }}
@@ -161,9 +203,10 @@ function Home() {
           Call the Owner of the House
         </Typography>
         <Typography sx={{
-          gridColumn: '2',
-          gridRow: '7',
+          gridColumn: 1,
+          gridRow: 8,
           ml: 10,
+          pb: 4,
         }}
         >
           Call the owner of the house and ask for further details
@@ -171,11 +214,12 @@ function Home() {
         <Button
           disabled
           sx={{
-            gridColumnStart: 2,
+            gridColumnStart: 1,
             gridColumnEnd: 4,
-            gridRowStart: 9,
-            gridRowEnd: 11,
+            gridRowStart: 10,
+            gridRowEnd: 12,
             p: 0,
+            mb: 4,
             width: '50px',
             height: '50px',
             minWidth: '50px',
@@ -193,8 +237,8 @@ function Home() {
         <Typography
           color="secondary"
           sx={{
-            gridColumn: '2',
-            gridRow: '9',
+            gridColumn: 1,
+            gridRow: 10,
             ml: 9,
             fontSize: '25px',
           }}
@@ -202,62 +246,17 @@ function Home() {
           Take a Deal with The Owner
         </Typography>
         <Typography sx={{
-          gridColumn: '2',
-          gridRow: '10',
+          gridColumn: 1,
+          gridRow: 11,
           ml: 10,
+          pb: 4,
         }}
         >
           Make an agreement to buy or rent the house you want
         </Typography>
       </Box>
-      <Box sx={{
-        display: 'grid',
-        width: 'auto',
-        pt: 5,
-        p: 10,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        bgcolor: theme.palette.primary.background,
-      }}
-      >
-        <Typography
-          variant="h4"
-          component="p"
-          sx={{
-            gridColumn: '1',
-            gridRow: '2',
-            mt: 1,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Want To Sell Your Property?
-        </Typography>
-        <Typography sx={{
-          gridColumn: '1',
-          gridRow: '3',
-        }}
-        >
-          If you want to sell a property, please contact us directly by sending a special message
-        </Typography>
-        <Button sx={{
-          gridColumn: '2',
-          gridRow: '2/4',
-          m: 1,
-          mr: 5,
-          width: 140,
-          border: '1px solid inherit',
-          height: 45,
-          color: theme.palette.primary.light,
-          backgroundColor: theme.palette.primary.contrast,
-          ':hover': {
-            bgcolor: theme.palette.primary.main,
-            color: theme.palette.primary.light,
-          },
-        }}
-        >
-          Contact us
-        </Button>
-      </Box>
+
+      <About />
     </>
   );
 }

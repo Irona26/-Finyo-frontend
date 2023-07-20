@@ -6,11 +6,13 @@ import {
 import CardMedia from '@mui/material/CardMedia';
 
 import { useTheme } from '@mui/material/styles';
+import useScrollTo from '../useScrollTo';
 
 import img from '../img/blog.png';
 
 export default function Blog() {
   const theme = useTheme();
+  useScrollTo(0, 0);
   return (
     <>
       <Box

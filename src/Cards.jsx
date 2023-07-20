@@ -1,7 +1,8 @@
-import React from 'react';
+import { React, useContext } from 'react';
 import { PropTypes } from 'prop-types';
 
 import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
@@ -10,10 +11,19 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 
+import Context from './Context';
+
 function Cards({
-  category, name, price, poster, currency, street,
+  id, category, name, price, poster, currency, adress,
 }) {
+  const { setCardId } = useContext(Context);
+
   const theme = useTheme();
+
+  const setStateId = () => {
+    setCardId(id);
+  };
+
   return (
     <Grid
       item
@@ -39,7 +49,7 @@ function Cards({
         <CardMedia
           image={poster}
           alt={name}
-          title={name}
+          title={id}
           sx={{
             height: 250, width: 350, display: 'flex', flexDirection: 'column', borderRadius: '10px', boxShadow: 3,
           }}
@@ -91,11 +101,15 @@ function Cards({
             gridRow: '3',
           }}
           >
-            {street}
+            {adress}
           </Typography>
         </CardContent>
 
         <Button
+          id={id}
+          smooth
+          to="/cardpage"
+          component={Link}
           variant="outlined"
           size="medium"
           color="secondary"
@@ -116,6 +130,7 @@ function Cards({
               border: 'none',
             },
           }}
+          onClick={setStateId}
         >
           View
         </Button>
@@ -125,12 +140,13 @@ function Cards({
 }
 
 Cards.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
-  street: PropTypes.string.isRequired,
+  adress: PropTypes.string.isRequired,
 };
 
 export default Cards;

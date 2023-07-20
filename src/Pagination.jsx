@@ -18,9 +18,13 @@ function Paginationn() {
     <Box
       sx={{
         display: 'grid',
-        width: 'auto',
         height: '50px',
-        p: 2,
+        width: 'auto',
+        maxWidth: '1200px',
+        m: '0 auto',
+        p: 4,
+        pb: 10,
+        pt: 0,
         alignItems: 'center',
         justifyContent: 'center',
         bgcolor: theme.palette.primary.background,

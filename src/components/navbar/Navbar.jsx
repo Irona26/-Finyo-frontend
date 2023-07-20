@@ -101,14 +101,14 @@ export default function Navbar() {
             sx={{
               fontSize: '18px',
               ':hover': {
-                bgcolor: theme.palette.primary.main,
+                bgcolor: theme.palette.primary.contrast,
                 color: theme.palette.primary.light,
               },
             }}
-            to="/help"
+            to="/contact"
             component={Link}
           >
-            Help
+            Contact
           </Button>
         </Box>
         <CardMedia

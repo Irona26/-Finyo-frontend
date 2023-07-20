@@ -61,17 +61,31 @@ function CardsList() {
   }, [cardListFilter.length]);
 
   return (
-    <Grid container fixed spacing={2} sx={{ backgroundColor: '#eceff1' }}>
+    <Grid
+      container
+      fixed
+      spacing={2}
+      sx={{
+        boxSizing: 'content-box',
+        width: '1200px',
+        maxWidth: '1200px',
+        m: '0 auto',
+        p: 4,
+        backgroundColor: '#eceff1',
+      }}
+    >
 
       { cardListFilter
         .map((apart) => (
           <Cards
+            id={apart.id}
             poster={apart.poster}
             name={apart.name}
             category={apart.category}
             currency={CurrencyData[CurrencyItem]}
             price={apart.price[CurrencyItem]}
             street={apart.street}
+            adress={apart.adress}
           />
         )).slice(firstCardIndex, lastCardIndex)}
     </Grid>
