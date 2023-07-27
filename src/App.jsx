@@ -15,17 +15,17 @@ import Navbar from './components/navbar/Navbar';
 import CardPage from './pages/CardPage';
 
 function App() {
-  const [currentPage, setCurrenPage] = useState(1);
-  const [cardsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
   const [isFormSubmitted, formSubmit] = useState(false);
   const [cardListLength, setLength] = useState(11);
   const [cardId, setCardId] = useState(null);
 
+  const cardsPerPage = 3;
   const lastCardIndex = currentPage * cardsPerPage;
   const firstCardIndex = lastCardIndex - cardsPerPage;
 
   const paginate = (pageNumber) => {
-    setCurrenPage(pageNumber);
+    setCurrentPage(pageNumber);
   };
 
   const methods = useForm({

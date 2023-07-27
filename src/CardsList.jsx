@@ -13,43 +13,45 @@ import Context from './Context';
 function CardsList() {
   const { getValues } = useFormContext();
 
-  const ApartItem = getValues().currentApartment;
-  const StreetName = getValues().currentStreet;
-  const RoomItem = getValues().currentRoomQuant;
-  const MinPrice = getValues().fromPrice;
-  const MaxPrice = getValues().lastPrice;
-  const CurrencyItem = getValues().currency;
+  const {
+    currentApartment: apartItem,
+    currentStreet: streetName,
+    currentRoomQuant: roomItem,
+    fromPrice: minPrice,
+    lastPrice: maxPrice,
+    currency: currencyItem,
+  } = getValues();
 
   const {
     firstCardIndex, lastCardIndex, isFormSubmitted, setLength,
   } = useContext(Context);
 
   const cardListFilter = useMemo(() => aparts.filter((apart) => {
-    if (ApartItem !== '') {
-      if (!apart.category.toLowerCase().includes(ApartItem)) {
+    if (apartItem !== '') {
+      if (!apart.category.toLowerCase().includes(apartItem)) {
         return false;
       }
     }
-    if (StreetName !== '') {
-      if (!apart.street.includes(StreetName)) {
-        return false;
-      }
-    }
-
-    if (RoomItem !== '') {
-      if (!apart.rooms.toString().includes(RoomItem)) {
+    if (streetName !== '') {
+      if (!apart.street.includes(streetName)) {
         return false;
       }
     }
 
-    if (MinPrice !== '') {
-      if (apart.price[CurrencyItem] <= MinPrice) {
+    if (roomItem !== '') {
+      if (!apart.rooms.toString().includes(roomItem)) {
         return false;
       }
     }
 
-    if (MaxPrice) {
-      if (apart.price[CurrencyItem] > MaxPrice) {
+    if (minPrice !== '') {
+      if (apart.price[currencyItem] <= minPrice) {
+        return false;
+      }
+    }
+
+    if (maxPrice) {
+      if (apart.price[currencyItem] > maxPrice) {
         return false;
       }
     }
@@ -82,8 +84,8 @@ function CardsList() {
             poster={apart.poster}
             name={apart.name}
             category={apart.category}
-            currency={CurrencyData[CurrencyItem]}
-            price={apart.price[CurrencyItem]}
+            currency={CurrencyData[currencyItem]}
+            price={apart.price[currencyItem]}
             street={apart.street}
             adress={apart.adress}
           />

@@ -9,6 +9,7 @@ import Context from './Context';
 
 function Paginationn() {
   const theme = useTheme();
+
   const { paginate, cardListLength, cardsPerPage } = useContext(Context);
   const handleChange = (event, value) => {
     paginate(value);
