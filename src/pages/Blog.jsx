@@ -1,329 +1,335 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {
-  Typography, Box,
+  Typography, Box, TextField,
 } from '@mui/material';
 
 import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
 
 import { useTheme } from '@mui/material/styles';
 import useScrollTo from '../useScrollTo';
 
-import img from '../img/blog.png';
+import blogimg1 from '../img/visit.jpg';
+import blogimg2 from '../img/townhouses.jpg';
+import blogimg3 from '../img/grodno.jpg';
 
 export default function Blog() {
   const theme = useTheme();
   useScrollTo(0, 0);
   return (
-    <>
+    <Box
+      sx={{
+        maxWidth: '1200px',
+        m: '0 auto',
+        p: 4,
+        pt: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        bgcolor: theme.palette.primary.light,
+      }}
+    >
       <Box
         sx={{
           display: 'grid',
           width: 'auto',
-          pt: 5,
-          p: 2,
+          maxWidth: '1200px',
+          m: '0 auto',
+          pt: 10,
           alignItems: 'center',
-          justifyContent: 'space-around',
+          bgcolor: theme.palette.primary.background,
         }}
       >
-        <CardMedia
-          component="img"
-          image={img}
-          alt="house"
-          objectFit="inherit"
-          sx={{
-            gridColumn: '1',
-            gridRow: '1/5',
-            height: 198,
-            width: 352,
-            borderRadius: '10px',
-          }}
-        />
         <Typography
-          variant="h3"
+          component="span"
+          color="secondary"
           sx={{
-            gridColumn: '2',
-            gridRow: '2',
-            width: '700px',
+            m: '0 auto',
+            gridRow: 1,
+            textAlign: 'center',
+          }}
+        >
+          FINYO / REAL ESTATE / BLOG
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            gridRow: 2,
+            pb: 2,
+            fontSize: '46px',
+            fontWeight: '700',
+            textAlign: 'center',
             color: theme.palette.primary.main,
           }}
         >
-          Buying a Townhouse:
-          {' '}
-          <br />
-          {' '}
-          6 Pros and Cons to Consider
+          Welcome to our blog!
+        </Typography>
+
+        <Typography
+          sx={{
+            gridRow: 3,
+            pb: 4,
+            textAlign: 'center',
+          }}
+        >
+          Analytics, overview, advices, news
+        </Typography>
+
+      </Box>
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          maxWidth: '1200px',
+          justifyContent: 'space-between',
+          mt: 10,
+          mb: 10,
+          p: 0,
+        }}
+      >
+        <Box>
+          <Card sx={{
+            width: 'auto',
+            alignItems: 'center',
+            boxShadow: 0,
+            flexDirection: 'column',
+            backgroundColor: theme.palette.primary.background,
+            ':hover': {
+              boxShadow: '10px 10px 10px rgb(8, 0, 92, 0.2)',
+            },
+          }}
+          >
+            <CardMedia
+              image={blogimg1}
+              alt="Places to visit in Grodno"
+              title="Places to visit"
+              sx={{
+                height: 250, width: 350, display: 'flex', flexDirection: 'column', boxShadow: 3,
+              }}
+            >
+
+              <Button
+                smooth="true"
+                to="/blog/visit"
+                component={Link}
+                variant="outlined"
+                size="medium"
+                sx={{
+                  width: '280px',
+                  height: '80px',
+                  p: -2,
+                  m: '0 auto',
+                  position: 'relative',
+                  top: '150px',
+                  zIndex: 7,
+                  backgroundColor: 'rgb(255, 193, 7, 0.85)',
+                  border: 'none',
+                  borderRadius: 0,
+                  fontSize: '18px',
+                  color: theme.palette.primary.light,
+                  textAlign: 'center',
+                  lineHeight: '1.3',
+                  ':hover': {
+                    backgroundColor: 'rgb(236, 239, 241, 0.7)',
+                    color: theme.palette.secondary.main,
+                    border: 'none',
+                  },
+                }}
+              >
+                Places to visit in summer in Belarus
+              </Button>
+            </CardMedia>
+          </Card>
+
+        </Box>
+        <Box>
+          <Card sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            backgroundColor: theme.palette.primary.background,
+            boxShadow: 0,
+            ':hover': {
+              boxShadow: '10px 10px 10px rgb(8, 0, 92, 0.2)',
+            },
+          }}
+          >
+            <CardMedia
+              image={blogimg2}
+              alt="Buying a Townhouse"
+              title="Buying a Townhouse"
+              sx={{
+                height: 250, width: 350, display: 'flex', flexDirection: 'column', boxShadow: 3,
+              }}
+            >
+
+              <Button
+                smooth="true"
+                to="/blog/townhouses"
+                component={Link}
+                variant="outlined"
+                size="medium"
+                sx={{
+                  width: '280px',
+                  height: '80px',
+                  p: -2,
+                  m: '0 auto',
+                  position: 'relative',
+                  top: '150px',
+                  zIndex: 7,
+                  backgroundColor: 'rgb(255, 193, 7, 0.85)',
+                  border: 'none',
+                  borderRadius: 0,
+                  fontSize: '18px',
+                  color: theme.palette.primary.light,
+                  textAlign: 'center',
+                  lineHeight: '1.3',
+                  ':hover': {
+                    backgroundColor: 'rgb(236, 239, 241, 0.7)',
+                    color: theme.palette.secondary.main,
+                    border: 'none',
+                  },
+                }}
+              >
+                Buying a Townhouse:
+                <br />
+                6 Pros and Cons
+              </Button>
+            </CardMedia>
+          </Card>
+        </Box>
+
+        <Box>
+          <Card sx={{
+            display: 'flex',
+            alignItems: 'center',
+            boxShadow: 0,
+            flexDirection: 'column',
+            backgroundColor: theme.palette.primary.background,
+            ':hover': {
+              boxShadow: '10px 10px 10px rgb(8, 0, 92, 0.2)',
+            },
+          }}
+          >
+            <CardMedia
+              image={blogimg3}
+              alt="Places to visit in Grodno"
+              title="Places to visit"
+              sx={{
+                height: 250, width: 350, display: 'flex', flexDirection: 'column', boxShadow: 3,
+              }}
+            >
+
+              <Button
+                smooth="true"
+                to="/blog/grodno"
+                component={Link}
+                variant="outlined"
+                size="medium"
+                sx={{
+                  width: '280px',
+                  height: '80px',
+                  p: -2,
+                  m: '0 auto',
+                  position: 'relative',
+                  top: '150px',
+                  zIndex: 7,
+                  backgroundColor: 'rgb(255, 193, 7, 0.85)',
+                  border: 'none',
+                  borderRadius: 0,
+                  fontSize: '18px',
+                  color: theme.palette.primary.light,
+                  textAlign: 'center',
+                  lineHeight: '1.3',
+                  ':hover': {
+                    backgroundColor: 'rgb(236, 239, 241, 0.7)',
+                    color: theme.palette.secondary.main,
+                    border: 'none',
+                  },
+                }}
+              >
+                Grodno: about
+              </Button>
+            </CardMedia>
+          </Card>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: 'grid',
+          maxWidth: '1200px',
+          p: 4,
+          m: '0 auto',
+          mb: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: theme.palette.primary.background,
+          boxShadow: '10px 10px 10px rgb(8, 0, 92, 0.2)',
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="p"
+          sx={{
+            gridColumn: '1/4',
+            gridRow: '1',
+            color: theme.palette.primary.contrast,
+          }}
+        >
+          Subscribe To Our Newsletter & Get News
         </Typography>
         <Typography
+          component="span"
+          sx={{
+            gridColumn: '1/4',
+            gridRow: '2',
+            width: 'auto',
+            m: '10px 0',
+            textAlign: 'center',
+            color: theme.palette.primary.main,
+          }}
+        >
+          Get notification about product discount and new place just for you
+        </Typography>
+        <Box
           sx={{
             gridColumn: '2',
             gridRow: '3',
-            color: theme.palette.primary.contrast,
-            textAlign: 'right',
+            alignItems: 'center',
           }}
         >
-          01/07/2023
-        </Typography>
+          <TextField
+            variant="outlined"
+            sx={{
+              width: '350px',
+              bgcolor: '#ffffff',
+              border: 'none',
+              borderRadius: 3,
+            }}
+          />
+          <Button
+            sx={{
+              gridColumn: '3',
+              gridRow: '3',
+              m: 1,
+              width: 140,
+              border: '1px solid inherit',
+              height: 45,
+              color: theme.palette.primary.light,
+              backgroundColor: theme.palette.primary.contrast,
+              ':hover': {
+                bgcolor: theme.palette.primary.main,
+                color: theme.palette.primary.light,
+              },
+            }}
+          >
+            Subscribe
+          </Button>
+        </Box>
       </Box>
-      <Box>
-        <Typography sx={{
-          width: 'auto',
-          p: 10,
-          pt: 2,
-          pb: 5,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          Is buying a townhouse the right option for you?
-          Townhouse living has been growing in popularity for more than a decade,
-          but the pandemic has served as a recent impetus for people to think
-          even more about living options outside of metro areas.
-          Townhouse communities are a great potential option for these homebuyers.
-          They serve as a nice middle ground between urban and suburban living:
-          a close-knit community that exists in a quieter environment.
-          Let’s take a closer look at pros and cons to consider before
-          taking the leap to buy a townhouse.
-        </Typography>
-        <Typography
-          variant="h4"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 5,
-            color: theme.palette.primary.main,
-          }}
-        >
-          What is a townhouse?
-        </Typography>
-        <Typography
-          sx={{
-            width: 'auto',
-            p: 10,
-            pt: 0,
-            pb: 5,
-            color: 'rgba(0, 0, 0, 0.65)',
-          }}
-        >
-          A townhouse is a home that shares at least one wall with a neighboring property.
-          While the term is often used interchangeably with “condo” or “rowhome,”
-          a townhouse is actually different from both.
-          Condos, for example, are typically a single unit within a larger building complex.
-          Rowhomes are built in a line and are usually built identically to each other.
-          <br />
-          <br />
-          Townhouses are multi-floor homes that are attached by one or
-          two walls to neighboring homes,
-          but can still have some architectural differences.
-          They may have some outside land (like a small patio)
-          but it does not extend very far past where the actual house sits.
-          <br />
-          <br />
-          Townhouses today are often built as part of a community or gated neighborhood,
-          making them an attractive option for people who want to live in a close-knit community
-          setting without being in a busy metro area.
-          Demand for this type of living has increased as a result of the pandemic and
-          the subsequent rise in remote work. With less people commuting to the city for work,
-          there is more demand for housing in suburban communities.
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Pro: Affordability
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 2,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          Townhouses are generally more affordable than traditional detached homes.
-          They sit on smaller lots, have minimal outdoor space, and share walls with the
-          neighbors. Upkeep is also cheaper as there is simply less space to maintain.
-
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.secondary.main,
-          }}
-        >
-          Con: Less square footage
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 5,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          On the other hand, townhouses have less living space both indoors and out.
-          Floorplans are often less open than in some traditional detached homes,
-          and by design they’re split up into multiple floors.
-          For big families or those with pets that require outdoor running space,
-          townhouses may feel limiting or downright cramped.
-
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Pro: HOA and amenities
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 2,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          Many townhouses are built in communities that come with a homeowners association
-          and shared amenities. These amenities might include outdoor walking trails, pools,
-          clubhouses, and more. HOA fees pay for services like snow removal and landscaping.
-          Sometimes certain utilities are included, too.
-          Many people enjoy these added conveniences and might pursue buying a townhouse
-          for those very reasons.
-
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.secondary.main,
-          }}
-        >
-          Con: Less freedom
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 5,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          While shared amenities and HOA services may be enjoyable and convenient,
-          they also mean less freedom in some respects when it comes to your home.
-          Many HOAs have rules about the outdoor appearance of homes
-          (for example, no exterior painting or fences) and you may sometimes
-          have to pay for things you don’t want or use as part of your HOA responsibilities.
-          It’s important for homebuyers to research the townhouse communities they’re considering
-          and choose one with an HOA that’s a good fit for the
-
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Pro: Close proximity to neighbors
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 2,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          Like we mentioned before, townhouses definitely offer close proximity to your neighbors
-          and, as a result, a strong sense of community. If you’re looking to live in a place
-          where you’ll know your neighbors and get to talk to them often,
-          a townhouse might be right for you. Townhouse communities often organize events as well,
-          like barbecues or seasonal celebrations, that help residents get to know
-          one another and build connections.
-        </Typography>
-        <Typography
-          variant="h5"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 0,
-            color: theme.palette.secondary.main,
-          }}
-        >
-          Con: Less privacy
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 5,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          You might enjoy being close with your neighbors, but it’s important to know that
-          townhouses also limit privacy. Shared walls mean you can sometimes
-          hear voices or loud noises (like tools or music) from your neighbor’s home.
-          It also means you’ll see more of them. While that typically just means you’ll encounter
-          them more often as you come and go, it may not be the preferred scenario for someone
-          who enjoys a quieter, more isolated living space.
-        </Typography>
-        <Typography
-          variant="h4"
-          component="p"
-          sx={{
-            p: 10,
-            pt: 0,
-            pb: 5,
-            color: theme.palette.primary.main,
-          }}
-        >
-          Buying a Townhouse: Deciding if It’s Right for You
-        </Typography>
-        <Typography sx={{
-          width: 'auto',
-          pl: 10,
-          pr: 10,
-          pb: 5,
-          color: 'rgba(0, 0, 0, 0.65)',
-        }}
-        >
-          As you can see, townhouses have plenty of benefits — an active and engaged community,
-          affordability, and convenient living amenities to name a few.
-          It really comes down to doing your research and deciding if that lifestyle is right
-          for you.
-          <br />
-          <br />
-          Because townhouses are often built-in areas transitioning from urban to rural,
-          you’ll often enjoy close proximity to nearby metro areas without having to be
-          right in the thick of it. Although you may not have as much private outdoor
-          space as you would in a detached home, shared outdoor areas like
-          walking trails and parks often make up for it.
-          <br />
-          <br />
-          In short: townhouses can provide the perfect balance.
-        </Typography>
-      </Box>
-    </>
+    </Box>
   );
 }

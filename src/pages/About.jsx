@@ -43,7 +43,7 @@ export default function About() {
           component="img"
           image={img}
           alt="house"
-          objectFit="inherit"
+          objectfit="inherit"
           sx={{
             gridColumn: '1',
             gridRow: '1/4',
@@ -96,7 +96,7 @@ export default function About() {
         </Typography>
 
         <Button
-          smooth
+          smooth="true"
           to="/about"
           component={Link}
           sx={{
@@ -162,7 +162,7 @@ export default function About() {
           component="img"
           image={buy}
           alt="buy a house"
-          objectFit="inherit"
+          objectfit="inherit"
           sx={{
             height: 50,
             width: 50,
@@ -199,7 +199,7 @@ export default function About() {
           we can match you with a house you will want to call home.
         </Typography>
         <Button
-          smooth
+          smooth="true"
           to="/#find"
           component={HashLink}
           sx={{
@@ -222,7 +222,7 @@ export default function About() {
           component="img"
           image={rent}
           alt="rent a house"
-          objectFit="inherit"
+          objectfit="inherit"
           sx={{
             height: 50,
             width: 50,
@@ -259,7 +259,7 @@ export default function About() {
           we can match you with a house you will want to call home.
         </Typography>
         <Button
-          smooth
+          smooth="true"
           to="/#find"
           component={HashLink}
           sx={{
@@ -282,7 +282,7 @@ export default function About() {
           component="img"
           image={deal}
           alt="make a deal"
-          objectFit="inherit"
+          objectfit="inherit"
           sx={{
             height: 50,
             width: 50,
@@ -320,7 +320,7 @@ export default function About() {
         </Typography>
 
         <Button
-          smooth
+          smooth="true"
           to="/#find"
           component={HashLink}
           sx={{
@@ -377,7 +377,7 @@ export default function About() {
           If you want to sell a property, please contact us directly by sending a special message
         </Typography>
         <Button
-          smooth
+          smooth="true"
           to="/contact"
           component={Link}
           sx={{

@@ -27,7 +27,7 @@ function Cards({
   return (
     <Grid
       item
-      md="4"
+      mb="4"
       sx={{
         m: '10px 0 10px 0',
         display: 'flex',
@@ -53,7 +53,37 @@ function Cards({
           sx={{
             height: 250, width: 350, display: 'flex', flexDirection: 'column', borderRadius: '10px', boxShadow: 3,
           }}
-        />
+        >
+          <Button
+            id={id}
+            smooth="true"
+            to="/cardpage"
+            component={Link}
+            variant="outlined"
+            size="medium"
+            color="secondary"
+            sx={{
+              width: '350px',
+              height: '40px',
+              p: 0,
+              position: 'relative',
+              top: '180px',
+              zIndex: 7,
+              backgroundColor: 'rgb(236, 239, 241, 0.7)',
+              border: 'none',
+              borderRadius: 0,
+              fontSize: '18px',
+              ':hover': {
+                bgcolor: 'rgb(255, 193, 7, 0.75)',
+                color: theme.palette.primary.light,
+                border: 'none',
+              },
+            }}
+            onClick={setStateId}
+          >
+            View
+          </Button>
+        </CardMedia>
         <CardContent sx={{
           display: 'grid',
           pb: 0,
@@ -66,9 +96,10 @@ function Cards({
           <Typography
             variant="body1"
             sx={{
-              gridColumn: '2',
-              gridRow: '1',
+              gridColumn: 2,
+              gridRow: 1,
               color: theme.palette.primary.contrast,
+              textAlign: 'end',
             }}
           >
             {price}
@@ -80,8 +111,8 @@ function Cards({
             variant="h6"
             component="h3"
             sx={{
-              gridColumn: '1',
-              gridRow: '1',
+              gridColumn: 1,
+              gridRow: 1,
               color: theme.palette.primary.main,
             }}
           >
@@ -89,51 +120,21 @@ function Cards({
           </Typography>
 
           <Typography sx={{
-            gridColumn: '1',
-            gridRow: '2',
+            gridColumn: 1,
+            gridRow: 2,
           }}
           >
             {category}
           </Typography>
 
           <Typography sx={{
-            gridColumn: '1',
-            gridRow: '3',
+            gridColumn: '1/3',
+            gridRow: 3,
           }}
           >
             {adress}
           </Typography>
         </CardContent>
-
-        <Button
-          id={id}
-          smooth
-          to="/cardpage"
-          component={Link}
-          variant="outlined"
-          size="medium"
-          color="secondary"
-          sx={{
-            width: '350px',
-            height: '40px',
-            p: 0,
-            position: 'relative',
-            top: '-150px',
-            zIndex: 7,
-            backgroundColor: 'rgb(236, 239, 241, 0.7)',
-            border: 'none',
-            borderRadius: 0,
-            fontSize: '18px',
-            ':hover': {
-              bgcolor: 'rgb(255, 193, 7, 0.75)',
-              color: theme.palette.primary.light,
-              border: 'none',
-            },
-          }}
-          onClick={setStateId}
-        >
-          View
-        </Button>
       </Card>
     </Grid>
   );

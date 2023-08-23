@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useEffect, useContext } from 'react';
 
 import {
   Box, Button, CardMedia, Typography,
@@ -8,16 +8,25 @@ import { useTheme } from '@mui/material/styles';
 
 import useScrollTo from '../useScrollTo';
 
+import buy from '../fixtures/buy';
+
 import Header from '../components/heading/Header';
 import CardsList from '../CardsList';
 import Paginationn from '../Pagination';
 import About from './About';
-
+import Context from '../Context';
 import img from '../img/7home.png';
 
 function Home() {
   const theme = useTheme();
   useScrollTo();
+
+  const { setCardsPerPage } = useContext(Context);
+
+  useEffect(() => {
+    setCardsPerPage(3);
+  });
+
   return (
     <>
       <Header />
@@ -56,7 +65,7 @@ function Home() {
         </Typography>
       </Box>
 
-      <CardsList />
+      <CardsList tab={buy} />
       <Paginationn />
 
       <Box sx={{
@@ -77,7 +86,6 @@ function Home() {
           component="img"
           image={img}
           alt="houses"
-          objectFit="inherit"
           sx={{
             height: 350,
             width: 350,
@@ -93,7 +101,7 @@ function Home() {
           color="secondary"
           sx={{
             gridColumn: '1/4',
-            gridRow: '1',
+            gridRow: 1,
             textAlign: 'start',
           }}
         >
