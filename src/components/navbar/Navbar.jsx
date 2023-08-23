@@ -115,7 +115,7 @@ export default function Navbar() {
           component="img"
           image={backimg}
           alt="houses"
-          objectFit="inherit"
+          objectfit="inherit"
           sx={{
             height: 100,
             width: 500,

@@ -16,25 +16,29 @@ function Paginationn() {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        height: '50px',
-        width: 'auto',
-        maxWidth: '1200px',
-        m: '0 auto',
-        p: 4,
-        pb: 10,
-        pt: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: theme.palette.primary.background,
-      }}
-    >
-      <Stack spacing={2}>
-        <Pagination count={Math.ceil(cardListLength / cardsPerPage)} color="primary" onChange={handleChange} />
-      </Stack>
-    </Box>
+
+    (cardListLength !== 0)
+      ? (
+        <Box
+          sx={{
+            display: 'grid',
+            height: '50px',
+            width: 'auto',
+            maxWidth: '1200px',
+            m: '0 auto',
+            p: 4,
+            pb: 10,
+            pt: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: theme.palette.primary.background,
+          }}
+        >
+          <Stack spacing={2}>
+            <Pagination count={Math.ceil(cardListLength / cardsPerPage)} color="primary" onChange={handleChange} />
+          </Stack>
+        </Box>
+      ) : null
   );
 }
 export default Paginationn;

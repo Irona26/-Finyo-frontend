@@ -2,7 +2,7 @@ export default [
   {
     id: 'ad01',
     category: 'apartment',
-    name: '3 rooms',
+    name: '3 rooms BUY',
     poster: 'https://roomester.ru/wp-content/uploads/2017/01/dizajn-trehkomnatnoj-kvartiry-2.jpg',
     price: {
       1: 53000,
@@ -31,7 +31,7 @@ export default [
     },
     rooms: 2,
     street: 'Bolshaya Troitskaya',
-    adress: '29, B. Troitskaya street, Grodno',
+    adress: '29, Bolshaya Troitskaya street, Grodno',
     description: 'Designer decoration. Expensive quality materials. Sold with appliances and furniture. Kitchen: oak veneer fronts. Cooker, oven, extractor hood, dishwasher - Bosch/Siemens. Fridge. Dressing room with equipment (entrance from the bedroom). Spacious bathroom 5 sq.m., washing machine. Main water filters, reverse osmosis filter for drinking water purification in the kitchen.',
     floor: '1st',
     year: '2006',

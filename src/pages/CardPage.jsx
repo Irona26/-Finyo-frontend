@@ -13,7 +13,7 @@ import WeekendOutlinedIcon from '@mui/icons-material/WeekendOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
-import aparts from '../fixtures/data';
+import aparts from '../fixtures/buy';
 import CurrencyData from '../fixtures/CurrencyData';
 import Context from '../Context';
 
